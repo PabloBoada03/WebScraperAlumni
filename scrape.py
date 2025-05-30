@@ -6,11 +6,13 @@ from bs4 import BeautifulSoup as bs
 def scrape(website):
     print("Ejecutando Chrome...")
 
-    chrome_driver_path = ".\\chromedriver.exe"  # doble backslash para Windows
-
     options = uc.ChromeOptions()
     options.add_argument('--blink-settings=imagesEnabled=false')
-    driver = uc.Chrome(service=Service(chrome_driver_path), options=options)
+    options.binary_location = "/usr/bin/chromium-browser"  # o "/usr/bin/chromium" si ese existe
+
+    service = Service("/usr/bin/chromedriver")
+
+    driver = uc.Chrome(service=service, options=options)
 
     try:
         driver.get(website)
@@ -19,7 +21,8 @@ def scrape(website):
         html = driver.page_source
         return html
     finally:
-        driver.quit()  # Corregido: con paréntesis
+        driver.quit()
+
 
 
 def extraer_body(contenido_html):
