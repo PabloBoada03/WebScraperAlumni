@@ -6,18 +6,26 @@ from bs4 import BeautifulSoup as bs
 def scrape(website):
     print("Ejecutando Chrome...")
 
+    chrome_driver_path = "/usr/local/bin/chromedriver"
+    browser_path = "/usr/bin/google-chrome"
+
     options = uc.ChromeOptions()
+    options.binary_location = browser_path
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--blink-settings=imagesEnabled=false')
-    options.binary_location = "/usr/bin/chromium-browser"  # o "/usr/bin/chromium" si ese existe
 
-    service = Service("/usr/bin/chromedriver")
-
-    driver = uc.Chrome(service=service, options=options)
+    driver = uc.Chrome(
+        service=Service(chrome_driver_path),
+        options=options,
+        browser_executable_path=browser_path  # <--- este parámetro es CLAVE
+    )
 
     try:
         driver.get(website)
         print("Página cargada...")
-        time.sleep(3)  # Espera a que se cargue el DOM
+        time.sleep(3)
         html = driver.page_source
         return html
     finally:
