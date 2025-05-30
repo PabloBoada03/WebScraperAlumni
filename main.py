@@ -2,7 +2,7 @@ import streamlit as st
 from scrape import scrape, extraer_body, limpiar_body, porcionador
 from parse import parse
 
-st.title("Alumni Web Scraper")
+st.title("Alumni Sabana Web Scraper")
 url = st.text_input("Ingrese una URL:")
 
 if st.button("Scrape"):

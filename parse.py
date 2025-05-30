@@ -2,14 +2,14 @@ import os
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+import streamlit as st
+
 
 # Cargar variables de entorno desde .env
 load_dotenv()
 
 # Obtener la API key
 api_key = os.getenv("GEMINI_API_KEY")
-if not api_key:
-    raise ValueError("GEMINI_API_KEY no está definida. Verifica el archivo .env.")
 
 # Configurar cliente
 client = genai.Client(api_key=api_key)
