@@ -1,0 +1,44 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.env/
+*.env
+
+# VSCode settings
+.vscode/
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Pytest cache
+.pytest_cache/
+
+# Streamlit cache
+.streamlit/
+
+# Selenium-related files (like downloaded drivers)
+chromedriver*
+.geckodriver*
+
+# Ignore large data files
+*.csv
+*.json
+*.db
+*.pkl
+*.h5
+*.zip
+*.tar.gz
+*.rar
+
+# Ignore system files
+.DS_Store
+Thumbs.db
